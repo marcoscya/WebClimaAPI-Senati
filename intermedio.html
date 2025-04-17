@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CLIMA DEL DÍA - DÍA INTERMEDIO SENATINO</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #003366, #005b99);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .contenedor {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      max-width: 750px;
+      width: 100%;
+      text-align: center;
+      color: #003366;
+    }
+
+    h1 {
+      font-size: 2.4em;
+      color: #003366;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 80%; /* Ajustar el tamaño de la imagen */
+      max-width: 600px; /* Limitar el tamaño máximo */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      margin-bottom: 20px; /* Espaciado debajo de la imagen */
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    p {
+      font-size: 1.15em;
+      margin: 15px 0;
+      color: #003366;
+    }
+
+    .recomendaciones {
+      background-color: #e6f2ff;
+      border-left: 6px solid #00B0F0;
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.95em;
+      color: #555;
+
+      
+    }
+    .btn-azul {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 24px;
+        background-color: #0055f3;
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+      
+      .btn-azul:hover {
+        background-color: #003ec9;
+      }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Clima del Día: Día Templado Senatino</h1>
+
+    <!-- Imagen centrada y ajustada -->
+    <img src="img/imgintermedio.png" alt="Día Intermedio en SENATI" />
+
+    <p>Hoy se presenta un día frío en SENATI. Se recomienda vestir con la camisa y saco oficial de SENATI, corbata, pantalón de vestir y zapatos adecuados. Mantente abrigado durante tus actividades.</p>
+
+    <div class="recomendaciones">
+      <strong>Recomendaciones para este día:</strong>
+      <ul>
+        <li>Llueve ocasionalmente, por lo que es recomendable llevar un paraguas o una chaqueta impermeable.</li>
+        <li>Protege tus ojos con lentes de sol si el sol está fuerte durante el día.</li>
+        <li>Lleva contigo una botella de agua para mantenerte hidratado.</li>
+      </ul>
+    </div>
+
+    <p class="footer">Mantente siempre informado y prepárate para cualquier cambio climático.</p>
+    <a href="index.html" class="btn-azul">Volver al Inicio</a>
+  </div>
+
+  <script>
+    // Cambiar el título luego de unos segundos como detalle animado
+    setTimeout(() => {
+      document.querySelector("h1").textContent = "🌤️ ¡Prepárate! Día Intermedio en SENATI";
+    }, 4000);
+  </script>
+</body>
+</html>

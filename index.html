@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima en los Departamentos de SENATI</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    
+    <style>
+        :root {
+            --senati-dark: #003366;
+            --senati-light: #00B0F0;
+            --white: #ffffff;
+        }
+    
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            background: var(--white);
+            min-height: 100vh;
+            position: relative;
+        }
+    
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('img/fondosenati.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+        }
+    
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            margin: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+    
+        .card h2 {
+            color: var(--senati-dark);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--senati-light);
+        }
+    
+        .temperature {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: var(--senati-dark);
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .clothing-recommendation {
+            background: rgba(0, 176, 240, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: var(--senati-dark);
+            font-style: normal;
+            font-size: 0.95em;
+        }
+    
+        button {
+            background: var(--senati-dark);
+            color: var(--white);
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    
+        button:hover {
+            background: var(--senati-light);
+            transform: scale(1.05);
+        }
+    
+        button:active {
+            transform: scale(0.98);
+        }
+    
+        h1 {
+            width: 100%;
+            text-align: center;
+            color: var(--white);
+            font-size: 2.5em;
+            margin: 30px 0;
+            font-family: 'Segoe UI', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+    
+        @media (max-width: 768px) {
+            .card {
+                width: calc(100% - 30px);
+                margin: 10px;
+            }
+    
+            h1 {
+                font-size: 1.8em;
+                padding: 15px;
+            }
+        }
+    
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .card {
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: calc(var(--order) * 0.1s);
+        }
+
+        .weather-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 10px 0;
+        }
+
+        .weather-info img{
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin-top: 5px;
+        }
+    </style>
+    
+</head>
+<body>
+    <body>
+        <!-- Título principal -->
+        <h1 style="width: 100%; text-align: center; color: white; font-size: 36px; margin: 30px 0; font-family: Arial, sans-serif; text-shadow: 2px 2px 4px #000;">
+            BIENVENIDO SENATINO, ELIGE UNA OPCIÓN
+        </h1>
+        
+        
+        <!-- Secciones de clima -->
+        <div class="card" id="climaAncash">
+            <h2>Áncash</h2>
+            <p class="temperature" id="temperatureAncash">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionAncash">Cargando...</p>
+                <div id="iconAncash"></div>
+                
+            </div>
+            <p id="recommendationAncash" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Ancash')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaArequipa">
+            <h2>Arequipa</h2>
+            <p class="temperature" id="temperatureArequipa">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionArequipa">Cargando...</p>
+                <div id="iconArequipa"></div>
+            </div>
+            <p id="recommendationArequipa" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Arequipa')">Ver detalles</button>
+        </div>
+        <div class="card" id="climaApurimac">
+            <h2>Apurímac</h2>
+            <p class="temperature" id="temperatureApurimac">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionApurimac">Cargando...</p>
+                <div id="iconApurimac"></div>
+            </div>
+            <p id="recommendationApurimac" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Apurimac')">Ver detalles</button>
+
+        </div>
+
+        <div class="card" id="climaAmazonas">
+            <h2>Amazonas</h2>
+            <p class="temperature" id="temperatureAmazonas">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionAmazonas">Cargando...</p>
+                <div id="iconAmazonas"></div>
+            </div>
+            <p id="recommendationAmazonas" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Amazonas')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaCajamarca">
+            <h2>Cajamarca</h2>
+            <p class="temperature" id="temperatureCajamarca">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionCajamarca">Cargando...</p>
+                <div id="iconCajamarca"></div>
+            </div>
+            <p id="recommendationCajamarca" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Cajamarca')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaCasma">
+            <h2>Casma</h2>
+            <p class="temperature" id="temperatureCasma">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionCasma">Cargando...</p>
+                <div id="iconCasma"></div>
+            </div>
+            <p id="recommendationCasma" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Casma')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaLima">
+            <h2>Lima</h2>
+            <p class="temperature" id="temperatureLima">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionLima">Cargando...</p>
+                <div id="iconLima"></div>
+            </div>
+            <p id="recommendationLima" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Lima')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaLoreto">
+            <h2>Loreto</h2>
+            <p class="temperature" id="temperatureLoreto">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionLoreto">Cargando...</p>
+                <div id="iconLoreto"></div>
+            </div>
+            <p id="recommendationLoreto" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Loreto')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaPiura">
+            <h2>Piura</h2>
+            <p class="temperature" id="temperaturePiura">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionPiura">Cargando...</p>
+                <div id="iconPiura"></div>
+            </div>
+            <p id="recommendationPiura" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Piura')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaSanMartin">
+            <h2>San Martín</h2>
+            <p class="temperature" id="temperatureSanMartin">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionSanMartin">Cargando...</p>
+                <div id="iconSanMartin"></div>
+            </div>
+            <p id="recommendationSanMartin" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('SanMartin')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaUcayali">
+            <h2>Ucayali</h2>
+            <p class="temperature" id="temperatureUcayali">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionUcayali">Cargando...</p>
+                <div id="iconUcayali"></div>
+            </div>
+            <p id="recommendationUcayali" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Ucayali')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaMadreDeDios">
+            <h2>Madre de Dios</h2>
+            <p class="temperature" id="temperatureMadreDeDios">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionMadreDeDios">Cargando...</p>
+                <div id="iconMadreDeDios"></div>
+            </div>
+            <p id="recommendationMadreDeDios" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('MadreDeDios')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaJunin">
+            <h2>Junín</h2>
+            <p class="temperature" id="temperatureJunin">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionJunin">Cargando...</p>
+                <div id="iconJunin"></div>
+            </div>
+            <p id="recommendationJunin" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Junin')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaHuanuco">
+            <h2>Huánuco</h2>
+            <p class="temperature" id="temperatureHuanuco">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionHuanuco">Cargando...</p>
+                <div id="iconHuanuco"></div>
+            </div>
+            <p id="recommendationHuanuco" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Huanuco')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaCusco">
+            <h2>Cusco</h2>
+            <p class="temperature" id="temperatureCusco">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionCusco">Cargando...</p>
+                <div id="iconCusco"></div>
+            </div>
+            <p id="recommendationCusco" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Cusco')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaPuno">
+            <h2>Puno</h2>
+            <p class="temperature" id="temperaturePuno">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionPuno">Cargando...</p>
+                <div id="iconPuno"></div>
+            </div>
+            <p id="recommendationPuno" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Puno')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaTacna">
+            <h2>Tacna</h2>
+            <p class="temperature" id="temperatureTacna">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionTacna">Cargando...</p>
+                <div id="iconTacna"></div>
+            </div>
+            <p id="recommendationTacna" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Tacna')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaIca">
+            <h2>Ica</h2>
+            <p class="temperature" id="temperatureIca">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionIca">Cargando...</p>
+                <div id="iconIca"></div>
+            </div>
+            <p id="recommendationIca" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Ica')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaTumbes">
+            <h2>Tumbes</h2>
+            <p class="temperature" id="temperatureTumbes">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionTumbes">Cargando...</p>
+                <div id="iconTumbes"></div>
+            </div>
+            <p id="recommendationTumbes" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Tumbes')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaCallao">
+            <h2>Callao</h2>
+            <p class="temperature" id="temperatureCallao">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionCallao">Cargando...</p>
+                <div id="iconCallao"></div>
+            </div>
+            <p id="recommendationCallao" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Callao')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaLambayeque">
+            <h2>Lambayeque</h2>
+            <p class="temperature" id="temperatureLambayeque">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionLambayeque">Cargando...</p>
+                <div id="iconLambayeque"></div>
+            </div>
+            <p id="recommendationLambayeque" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('Lambayeque')">Ver detalles</button>
+        </div>
+
+        <div class="card" id="climaLaLibertad">
+            <h2>La Libertad</h2>
+            <p class="temperature" id="temperatureLaLibertad">Cargando...</p>
+            <div class="weather-info">
+                <p id="descriptionLaLibertad">Cargando...</p>
+                <div id="iconLaLibertad"></div>
+            </div>
+            <p id="recommendationLaLibertad" class="clothing-recommendation">Cargando...</p>
+            <button onclick="redirigir('LaLibertad')">Ver detalles</button>
+        </div>
+    <!-- Repite esto para todos los demás departamentos -->
+    <script src="script.js"></script>
+
+<script>
+    // Función para actualizar el clima
+    function updateClima(department, lat, lon) {
+        let url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let temperature = data.current_weather.temperature;
+
+                // 20 rojo arriba 19 frio 
+
+                let weatherCode = data.current_weather.weathercode;
+                let description = "";
+                let recommendation = "";
+                let icon = "";
+                // Determinar el estado del clima
+                switch (weatherCode) {
+                    case 0:
+                        description = "Despejado";
+                        recommendation = "Recomendación: Usa ropa ligera";
+                        icon = "<img src='img_clima/sunny_with_cloudy.png'>";
+                        break;
+                    case 1:
+                        description = "Parcialmente nublado";
+                        recommendation = "Recomendación: Lleva un suéter ligero";
+                        icon = "<img src='img_clima/mostly_cloudy_day.png'>";
+                        break;
+                    case 2:
+                        description = "Nublado";
+                        recommendation = "Recomendación: Lleva un abrigo ligero";
+                        icon = "<img src='img_clima/cloudy.png'>";
+                        break;
+                    case 3:
+                        description = "Lluvia ligera";
+                        recommendation = "Recomendación: Lleva paraguas";
+                        icon = "<img src='img_clima/drizzle.png'>";
+                        break;
+                    default:
+                        description = "Clima desconocido";
+                        recommendation = "Recomendación: Consulta el clima más tarde";
+                        icon = "<img src='img_clima/haze_fog_dust_smoke.png' alt='Despejado'>";
+                        break;
+                }
+
+                // Actualizar los elementos en el HTML
+                document.getElementById(`temperature${department}`).textContent = `${temperature}°C`;
+                document.getElementById(`description${department}`).textContent = description;
+                document.getElementById(`recommendation${department}`).textContent = recommendation;
+                document.getElementById(`icon${department}`).innerHTML = icon;
+
+            })
+            .catch(error => {
+                console.error("Error fetching data: ", error);
+            });
+    }
+
+    // Función para redirigir según el clima
+    function redirigir(department) {
+        let temperature = parseInt(document.getElementById(`temperature${department}`).textContent);
+
+        if (temperature < 15) {
+            window.location.href = "frio.html";  // Redirige a la vista de clima frío
+        } else if (temperature >= 15 && temperature <= 25) {
+            window.location.href = "intermedio.html";  // Redirige a la vista de clima intermedio
+        } else {
+            window.location.href = "calor.html";  // Redirige a la vista de clima cálido
+        }
+    }
+
+    // Actualizar el clima de cada ciudad con sus respectivas coordenadas
+    updateClima("Ancash", -9.5713, -77.5980);
+    updateClima("Arequipa", -16.4090, -71.5375);
+    updateClima("Ancash", -9.5713, -77.5980);
+    updateClima("Arequipa", -16.4090, -71.5375);
+    updateClima("Apurimac", -13.6000, -73.8000);
+    updateClima("Amazonas", -4.0739, -77.8700);
+    updateClima("Cajamarca", -7.1569, -78.5112);
+    updateClima("Casma", -9.0760, -78.4912);
+    updateClima("Lima", -12.0464, -77.0428);
+    updateClima("Loreto", -3.7450, -73.2520);
+    updateClima("Piura", -5.1945, -80.6328);
+    updateClima("SanMartin", -6.5454, -77.2254);
+    updateClima("Ucayali", -8.3305, -74.2248);
+    updateClima("MadreDeDios", -12.5981, -69.1918);
+    updateClima("Junin", -11.9603, -75.2044);
+    updateClima("Huanuco", -9.9300, -76.2420);
+    updateClima("Cusco", -13.5320, -71.9675);
+    updateClima("Puno", -15.8403, -69.0188);
+    updateClima("Tacna", -18.0153, -70.2507);
+    updateClima("Ica", -13.1378, -75.5921);
+    updateClima("Tumbes", -3.5660, -80.4550);
+    updateClima("Callao", -12.0432, -77.0282);
+    updateClima("Lambayeque", -6.7580, -79.9177);
+    updateClima("LaLibertad", -8.1133, -78.9280);</script>
+
+</body>
+</html>
