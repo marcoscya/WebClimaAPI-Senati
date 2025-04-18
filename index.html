@@ -3,204 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clima en los Departamentos de SENATI</title>
-    <!-- <link rel="stylesheet" href="index.css"> -->
-    
-    <style>
-        :root {
-            --senati-dark: #003366;
-            --senati-light: #00B0F0;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            position: relative;
-            background-image: url('img/fondo_senati_2.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 0;
-            }
-        }
-
-    
-        /* body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('img/fondo_senati_2.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            z-index: -1;
-        } */
-    
-        .card {
-        background: rgba(0, 0, 0, 0.6);
-        padding: 25px;
-        border-radius: 20px;
-        width: 280px;
-        margin: 15px;
-        text-align: left;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        color: white;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
-        z-index: 1;
-    }
-
-    .card h2 {
-        color: white;
-        font-size: 1.8em;
-        margin-bottom: 10px;
-        position: relative;
-        z-index: 2;
-        border-bottom: none;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-
-    .temperature {
-        font-size: 2.5em;
-        font-weight: bold;
-        color: white;
-        margin: 10px 0;
-        position: relative;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-
-    .weather-info {
-        position: relative;
-        z-index: 2;
-        margin: 15px 0;
-    }
-
-    .clothing-recommendation {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 15px;
-        border-radius: 10px;
-        margin: 15px 0;
-        color: white;
-        position: relative;
-        z-index: 2;
-        backdrop-filter: blur(5px);
-    }
-
-    button {
-        background: white;
-        color: black;
-        padding: 15px 25px;
-        font-size: 1em;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 20px;
-        transition: all 0.3s ease;
-        position: relative;
-        z-index: 2;
-        font-weight: 600;
-    }
-
-    button:hover {
-        background: rgba(255,255,255,0.9);
-        transform: scale(1.02);
-    }
-    
-        button:active {
-            transform: scale(0.98);
-        }
-    
-        h1 {
-            width: 100%;
-            text-align: center;
-            color: var(--white);
-            font-size: 2.5em;
-            margin: 30px 0;
-            font-family: 'Segoe UI', sans-serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-        }
-    
-        @media (max-width: 768px) {
-            .card {
-                width: calc(100% - 30px);
-                margin: 10px;
-            }
-    
-            h1 {
-                font-size: 1.8em;
-                padding: 15px;
-            }
-        }
-    
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    
-        .card {
-            animation: fadeInUp 0.5s ease forwards;
-            animation-delay: calc(var(--order) * 0.1s);
-        }
-
-        .weather-info {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin: 10px 0;
-        }
-
-        .weather-info img{
-            width: 30px;
-            height: 30px;
-            vertical-align: middle;
-            margin-top: 5px;
-        }
-    </style>
+    <title>Clima SENATI</title>
+    <link rel="icon" type="image/png" href="img/logos/logo_web_2.png">
+    <link rel="stylesheet" href="index.css">
     
 </head>
 <body>
@@ -480,27 +285,27 @@
                     case 0:
                         description = "Despejado";
                         recommendation = "Recomendación: Usa ropa ligera";
-                        icon = "<img src='img_clima/sunny_with_cloudy.png'>";
+                        icon = "<img src='../img/img_clima/sunny_with_cloudy.png'>";
                         break;
                     case 1:
                         description = "Parcialmente nublado";
                         recommendation = "Recomendación: Lleva un suéter ligero";
-                        icon = "<img src='img_clima/mostly_cloudy_day.png'>";
+                        icon = "<img src='../img/img_clima/mostly_cloudy_day.png'>";
                         break;
                     case 2:
                         description = "Nublado";
                         recommendation = "Recomendación: Lleva un abrigo ligero";
-                        icon = "<img src='img_clima/cloudy.png'>";
+                        icon = "<img src='../img/img_clima/cloudy.png'>";
                         break;
                     case 3:
                         description = "Lluvia ligera";
                         recommendation = "Recomendación: Lleva paraguas";
-                        icon = "<img src='img_clima/drizzle.png'>";
+                        icon = "<img src='../img/img_clima/drizzle.png'>";
                         break;
                     default:
                         description = "Clima desconocido";
                         recommendation = "Recomendación: Consulta el clima más tarde";
-                        icon = "<img src='img_clima/haze_fog_dust_smoke.png' alt='Despejado'>";
+                        icon = "<img src='../img/img_clima/haze_fog_dust_smoke.png' alt='Despejado'>";
                         break;
                 }
 
@@ -521,37 +326,37 @@
         let temperature = parseInt(document.getElementById(`temperature${department}`).textContent);
 
         if (temperature < 15) {
-            window.location.href = "frio.html";  // Redirige a la vista de clima frío
+            window.location.href = "pages/frio.html";  // Redirige a la vista de clima frío
         } else if (temperature >= 15 && temperature <= 25) {
-            window.location.href = "intermedio.html";  // Redirige a la vista de clima intermedio
+            window.location.href = "pages/intermedio.html";  // Redirige a la vista de clima intermedio
         } else {
-            window.location.href = "calor.html";  // Redirige a la vista de clima cálido
+            window.location.href = "pages/calor.html";  // Redirige a la vista de clima cálido
         }
     }
 
     const fondosPorRegion = {
-    Ancash: 'url("partes/ancash.jpg")',
-    Arequipa: 'url("partes/arequipa.jpg")',
-    Apurimac: 'url("partes/apurimac.jpg")',
-    Amazonas: 'url("partes/amazonas.jpg")',
-    Casma: 'url("partes/casma.jpg")',
-    Lima: 'url("partes/lima.jpg")',
-    Loreto: 'url("partes/loreto.jpg")',
-    Piura: 'url("partes/piura.jpg")',
-    SanMartin: 'url("partes/san_martin.jpg")',
-    Ucayali: 'url("partes/ucayali.jpg")',
-    MadreDeDios: 'url("partes/madre_de_dios.jpg")',
-    Junin: 'url("partes/junin.jpg")',
-    Huanuco: 'url("partes/huanuco.png")',
-    Cusco: 'url("partes/cusco.jpg")',
-    Puno: 'url("partes/puno.jpg")',
-    Tacna: 'url("partes/tacna.jpg")',
-    Ica: 'url("partes/ica.jpg")',
-    Tumbes: 'url("partes/tumbes.jpg")',
-    Callao: 'url("partes/callao.jpg")',
-    Lambayeque: 'url("partes/lambayeque.jpg")',
-    LaLibertad: 'url("partes/la_libertad.jpg")',
-    Cajamarca: 'url("partes/cajamarca.jpg")',
+    Ancash: 'url("img/partes/ancash.jpg")',
+    Arequipa: 'url("img/partes/arequipa.jpg")',
+    Apurimac: 'url("img/partes/apurimac.jpg")',
+    Amazonas: 'url("img/partes/amazonas.jpg")',
+    Casma: 'url("img/partes/casma.jpg")',
+    Lima: 'url("img/partes/lima.jpg")',
+    Loreto: 'url("img/partes/loreto.jpg")',
+    Piura: 'url("img/partes/piura.jpg")',
+    SanMartin: 'url("img/partes/san_martin.jpg")',
+    Ucayali: 'url("img/partes/ucayali.jpg")',
+    MadreDeDios: 'url("img/partes/madre_de_dios.jpg")',
+    Junin: 'url("img/partes/junin.jpg")',
+    Huanuco: 'url("img/partes/huanuco.png")',
+    Cusco: 'url("img/partes/cusco.jpg")',
+    Puno: 'url("img/partes/puno.jpg")',
+    Tacna: 'url("img/partes/tacna.jpg")',
+    Ica: 'url("img/partes/ica.jpg")',
+    Tumbes: 'url("img/partes/tumbes.jpg")',
+    Callao: 'url("img/partes/callao.jpg")',
+    Lambayeque: 'url("img/partes/lambayeque.jpg")',
+    LaLibertad: 'url("img/partes/la_libertad.jpg")',
+    Cajamarca: 'url("img/partes/cajamarca.jpg")',
     };
 
     // Seleccionamos todas las tarjetas que tengan la clase 'fondo'
