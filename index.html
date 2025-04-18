@@ -12,7 +12,7 @@
             --senati-light: #00B0F0;
             --white: #ffffff;
         }
-    
+
         body {
             font-family: 'Segoe UI', sans-serif;
             margin: 0;
@@ -21,90 +21,124 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
-            background: var(--white);
             min-height: 100vh;
             position: relative;
+            background-image: url('img/fondo_senati_2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 0;
+            }
         }
+
     
-        body::before {
+        /* body::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('img/fondosenati.jpg');
+            background-image: url('img/fondo_senati_2.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0.15;
             z-index: -1;
-        }
+        } */
     
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            width: 280px;
-            margin: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-    
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-    
-        .card h2 {
-            color: var(--senati-dark);
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--senati-light);
-        }
-    
-        .temperature {
-            font-size: 3.5em;
-            font-weight: bold;
-            color: var(--senati-dark);
-            margin: 15px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-    
-        .clothing-recommendation {
-            background: rgba(0, 176, 240, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            color: var(--senati-dark);
-            font-style: normal;
-            font-size: 0.95em;
-        }
-    
-        button {
-            background: var(--senati-dark);
-            color: var(--white);
-            padding: 12px 25px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-    
-        button:hover {
-            background: var(--senati-light);
-            transform: scale(1.05);
-        }
+        background: rgba(0, 0, 0, 0.6);
+        padding: 25px;
+        border-radius: 20px;
+        width: 280px;
+        margin: 15px;
+        text-align: left;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        color: white;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+        z-index: 1;
+    }
+
+    .card h2 {
+        color: white;
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 2;
+        border-bottom: none;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .temperature {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: white;
+        margin: 10px 0;
+        position: relative;
+        z-index: 2;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .weather-info {
+        position: relative;
+        z-index: 2;
+        margin: 15px 0;
+    }
+
+    .clothing-recommendation {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0;
+        color: white;
+        position: relative;
+        z-index: 2;
+        backdrop-filter: blur(5px);
+    }
+
+    button {
+        background: white;
+        color: black;
+        padding: 15px 25px;
+        font-size: 1em;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+        font-weight: 600;
+    }
+
+    button:hover {
+        background: rgba(255,255,255,0.9);
+        transform: scale(1.02);
+    }
     
         button:active {
             transform: scale(0.98);
@@ -173,12 +207,15 @@
     <body>
         <!-- Título principal -->
         <h1 style="width: 100%; text-align: center; color: white; font-size: 36px; margin: 30px 0; font-family: Arial, sans-serif; text-shadow: 2px 2px 4px #000;">
-            BIENVENIDO SENATINO, ELIGE UNA OPCIÓN
+            Descubre el Clima en tu Sede SENATI<br>
+            <span style="font-size: 24px; opacity: 0.9; font-weight: normal; display: block; margin-top: 10px;">
+                Encuentra la información meteorológica actualizada de tu campus
+            </span>
         </h1>
         
         
         <!-- Secciones de clima -->
-        <div class="card" id="climaAncash">
+        <div class="card fondo" id="climaAncash" data-region="Ancash">
             <h2>Áncash</h2>
             <p class="temperature" id="temperatureAncash">Cargando...</p>
             <div class="weather-info">
@@ -190,7 +227,7 @@
             <button onclick="redirigir('Ancash')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaArequipa">
+        <div class="card fondo" id="climaArequipa" data-region="Arequipa">
             <h2>Arequipa</h2>
             <p class="temperature" id="temperatureArequipa">Cargando...</p>
             <div class="weather-info">
@@ -200,7 +237,7 @@
             <p id="recommendationArequipa" class="clothing-recommendation">Cargando...</p>
             <button onclick="redirigir('Arequipa')">Ver detalles</button>
         </div>
-        <div class="card" id="climaApurimac">
+        <div class="card fondo" id="climaApurimac" data-region="Apurimac">
             <h2>Apurímac</h2>
             <p class="temperature" id="temperatureApurimac">Cargando...</p>
             <div class="weather-info">
@@ -212,7 +249,7 @@
 
         </div>
 
-        <div class="card" id="climaAmazonas">
+        <div class="card fondo" id="climaAmazonas" data-region="Amazonas">
             <h2>Amazonas</h2>
             <p class="temperature" id="temperatureAmazonas">Cargando...</p>
             <div class="weather-info">
@@ -223,7 +260,7 @@
             <button onclick="redirigir('Amazonas')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaCajamarca">
+        <div class="card fondo" id="climaCajamarca" data-region="Cajamarca">
             <h2>Cajamarca</h2>
             <p class="temperature" id="temperatureCajamarca">Cargando...</p>
             <div class="weather-info">
@@ -234,7 +271,7 @@
             <button onclick="redirigir('Cajamarca')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaCasma">
+        <div class="card fondo" id="climaCasma" data-region="Casma">
             <h2>Casma</h2>
             <p class="temperature" id="temperatureCasma">Cargando...</p>
             <div class="weather-info">
@@ -245,7 +282,7 @@
             <button onclick="redirigir('Casma')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaLima">
+        <div class="card fondo" id="climaLima" data-region="Lima">
             <h2>Lima</h2>
             <p class="temperature" id="temperatureLima">Cargando...</p>
             <div class="weather-info">
@@ -256,7 +293,7 @@
             <button onclick="redirigir('Lima')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaLoreto">
+        <div class="card fondo" id="climaLoreto" data-region="Loreto">
             <h2>Loreto</h2>
             <p class="temperature" id="temperatureLoreto">Cargando...</p>
             <div class="weather-info">
@@ -267,7 +304,7 @@
             <button onclick="redirigir('Loreto')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaPiura">
+        <div class="card fondo" id="climaPiura" data-region="Piura">
             <h2>Piura</h2>
             <p class="temperature" id="temperaturePiura">Cargando...</p>
             <div class="weather-info">
@@ -278,7 +315,7 @@
             <button onclick="redirigir('Piura')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaSanMartin">
+        <div class="card fondo" id="climaSanMartin" data-region="SanMartin">
             <h2>San Martín</h2>
             <p class="temperature" id="temperatureSanMartin">Cargando...</p>
             <div class="weather-info">
@@ -289,7 +326,7 @@
             <button onclick="redirigir('SanMartin')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaUcayali">
+        <div class="card fondo" id="climaUcayali" data-region="Ucayali">
             <h2>Ucayali</h2>
             <p class="temperature" id="temperatureUcayali">Cargando...</p>
             <div class="weather-info">
@@ -300,7 +337,7 @@
             <button onclick="redirigir('Ucayali')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaMadreDeDios">
+        <div class="card fondo" id="climaMadreDeDios" data-region="MadreDeDios">
             <h2>Madre de Dios</h2>
             <p class="temperature" id="temperatureMadreDeDios">Cargando...</p>
             <div class="weather-info">
@@ -311,7 +348,7 @@
             <button onclick="redirigir('MadreDeDios')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaJunin">
+        <div class="card fondo" id="climaJunin" data-region="Junin">
             <h2>Junín</h2>
             <p class="temperature" id="temperatureJunin">Cargando...</p>
             <div class="weather-info">
@@ -322,7 +359,7 @@
             <button onclick="redirigir('Junin')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaHuanuco">
+        <div class="card fondo" id="climaHuanuco" data-region="Huanuco">
             <h2>Huánuco</h2>
             <p class="temperature" id="temperatureHuanuco">Cargando...</p>
             <div class="weather-info">
@@ -333,7 +370,7 @@
             <button onclick="redirigir('Huanuco')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaCusco">
+        <div class="card fondo" id="climaCusco" data-region="Cusco">
             <h2>Cusco</h2>
             <p class="temperature" id="temperatureCusco">Cargando...</p>
             <div class="weather-info">
@@ -344,7 +381,7 @@
             <button onclick="redirigir('Cusco')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaPuno">
+        <div class="card fondo" id="climaPuno" data-region="Puno">
             <h2>Puno</h2>
             <p class="temperature" id="temperaturePuno">Cargando...</p>
             <div class="weather-info">
@@ -355,7 +392,7 @@
             <button onclick="redirigir('Puno')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaTacna">
+        <div class="card fondo" id="climaTacna" data-region="Tacna">
             <h2>Tacna</h2>
             <p class="temperature" id="temperatureTacna">Cargando...</p>
             <div class="weather-info">
@@ -366,7 +403,7 @@
             <button onclick="redirigir('Tacna')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaIca">
+        <div class="card fondo" id="climaIca" data-region="Ica">
             <h2>Ica</h2>
             <p class="temperature" id="temperatureIca">Cargando...</p>
             <div class="weather-info">
@@ -377,7 +414,7 @@
             <button onclick="redirigir('Ica')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaTumbes">
+        <div class="card fondo" id="climaTumbes" data-region="Tumbes">
             <h2>Tumbes</h2>
             <p class="temperature" id="temperatureTumbes">Cargando...</p>
             <div class="weather-info">
@@ -388,7 +425,7 @@
             <button onclick="redirigir('Tumbes')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaCallao">
+        <div class="card fondo" id="climaCallao" data-region="Callao">
             <h2>Callao</h2>
             <p class="temperature" id="temperatureCallao">Cargando...</p>
             <div class="weather-info">
@@ -399,7 +436,7 @@
             <button onclick="redirigir('Callao')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaLambayeque">
+        <div class="card fondo" id="climaLambayeque" data-region="Lambayeque">
             <h2>Lambayeque</h2>
             <p class="temperature" id="temperatureLambayeque">Cargando...</p>
             <div class="weather-info">
@@ -410,7 +447,7 @@
             <button onclick="redirigir('Lambayeque')">Ver detalles</button>
         </div>
 
-        <div class="card" id="climaLaLibertad">
+        <div class="card fondo" id="climaLaLibertad" data-region="LaLibertad">
             <h2>La Libertad</h2>
             <p class="temperature" id="temperatureLaLibertad">Cargando...</p>
             <div class="weather-info">
@@ -491,6 +528,41 @@
             window.location.href = "calor.html";  // Redirige a la vista de clima cálido
         }
     }
+
+    const fondosPorRegion = {
+    Ancash: 'url("partes/ancash.jpg")',
+    Arequipa: 'url("partes/arequipa.jpg")',
+    Apurimac: 'url("partes/apurimac.jpg")',
+    Amazonas: 'url("partes/amazonas.jpg")',
+    Casma: 'url("partes/casma.jpg")',
+    Lima: 'url("partes/lima.jpg")',
+    Loreto: 'url("partes/loreto.jpg")',
+    Piura: 'url("partes/piura.jpg")',
+    SanMartin: 'url("partes/san_martin.jpg")',
+    Ucayali: 'url("partes/ucayali.jpg")',
+    MadreDeDios: 'url("partes/madre_de_dios.jpg")',
+    Junin: 'url("partes/junin.jpg")',
+    Huanuco: 'url("partes/huanuco.png")',
+    Cusco: 'url("partes/cusco.jpg")',
+    Puno: 'url("partes/puno.jpg")',
+    Tacna: 'url("partes/tacna.jpg")',
+    Ica: 'url("partes/ica.jpg")',
+    Tumbes: 'url("partes/tumbes.jpg")',
+    Callao: 'url("partes/callao.jpg")',
+    Lambayeque: 'url("partes/lambayeque.jpg")',
+    LaLibertad: 'url("partes/la_libertad.jpg")',
+    Cajamarca: 'url("partes/cajamarca.jpg")',
+    };
+
+    // Seleccionamos todas las tarjetas que tengan la clase 'fondo'
+    document.querySelectorAll('.fondo').forEach(card => {
+    const region = card.dataset.region;
+    if (fondosPorRegion[region]) {
+        card.style.backgroundImage = fondosPorRegion[region];
+        card.style.backgroundSize = 'cover';
+        card.style.backgroundPosition = 'center';
+    }
+    });
 
     // Actualizar el clima de cada ciudad con sus respectivas coordenadas
     updateClima("Ancash", -9.5713, -77.5980);
