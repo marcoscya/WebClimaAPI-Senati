@@ -18,105 +18,64 @@
       body {
         font-family: "Segoe UI", sans-serif;
         margin: 0;
-        min-height: 100vh;
-        background: linear-gradient(
-          135deg,
-          var(--senati-dark),
-          var(--senati-light)
-        );
-        display: grid;
-        place-items: center;
         padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
         position: relative;
-        overflow-x: hidden;
-      }
+        background-image: url("img/fondo_senati_2.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
 
-      body::before {
-        content: "❄";
-        position: fixed;
-        font-size: 2em;
-        color: rgba(255, 255, 255, 0.3);
-        animation: snowfall 10s linear infinite;
-        z-index: 0;
-      }
-
-      @keyframes snowfall {
-        0% {
-          transform: translateY(-100vh) translateX(0);
-        }
-        100% {
-          transform: translateY(100vh) translateX(20px);
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 0;
         }
       }
 
       .contenedor {
-        background: var(--frost-white);
-        backdrop-filter: blur(10px);
-        border-radius: 25px;
-        padding: 40px;
-        width: 90%;
-        max-width: 800px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
-          inset 0 -3px 10px rgba(0, 0, 0, 0.1);
-        position: relative;
-        z-index: 1;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .temp-display {
-        background: linear-gradient(145deg, #e6f2ff, #ffffff);
-        border-radius: 20px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         padding: 20px;
-        margin: 30px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        box-shadow: 0 10px 20px rgba(0, 51, 102, 0.1);
-      }
-
-      .temp-icon {
-        font-size: 3em;
-        color: var(--senati-light);
+        max-width: 700px;
+        width: 100%;
+        text-align: center;
+        color: #003366;
+        position: relative;
+        z-index: 2;
       }
 
       h1 {
-        color: var(--senati-dark);
-        font-size: 2.5em;
-        margin: 0;
-        padding-bottom: 20px;
-        position: relative;
-        text-align: center;
-      }
-
-      h1::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
-        background: linear-gradient(
-          to right,
-          var(--senati-light),
-          var(--senati-dark)
-        );
-        border-radius: 2px;
+        font-size: 2em;
+        color: #003366;
+        margin-bottom: 15px;
       }
 
       img {
-        width: 100%;
-        max-width: 600px;
-        border-radius: 20px;
-        margin: 30px auto;
+        width: 85%;
+        max-width: 600px; /* Reducido para mejor proporción */
+        height: 400px; /* Ajustado para mantener ratio aspecto */
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin: 0 auto 15px;
+        transition: transform 0.3s ease;
+        object-fit: contain; /* Cambiado a contain para no cortar la imagen */
+        object-position: center;
         display: block;
-        transition: transform 0.5s ease;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
       }
 
       img:hover {
-        transform: scale(1.02) translateY(-5px);
+        transform: scale(1.02); /* Efecto hover suave */
       }
 
       .recomendaciones {
@@ -127,66 +86,104 @@
         position: relative;
       }
 
-      .recomendaciones::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 6px;
-        background: var(--senati-light);
-        border-radius: 3px;
+      p {
+        font-size: 1em;
+        line-height: 1.6;
+        margin: 20px 0;
+        color: #003366;
+        padding: 0 15px;
       }
 
-      .recomendaciones ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      .recomendaciones li {
-        margin: 15px 0;
-        padding-left: 30px;
-        position: relative;
-      }
-
-      .recomendaciones li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--senati-light);
-        font-weight: bold;
-      }
-
-      .btn-azul {
-        display: block;
-        width: fit-content;
-        margin: 30px auto 0;
-        padding: 15px 40px;
-        background: linear-gradient(
-          145deg,
-          var(--senati-dark),
-          var(--senati-light)
-        );
-        color: white;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 20px rgba(0, 51, 102, 0.2);
-        text-align: center;
-      }
-
-      .btn-azul:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(0, 51, 102, 0.3);
+      .recomendaciones {
+        background-color: #e6f2ff;
+        border-left: 6px solid #003366;
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-top: 15px;
+        text-align: left;
       }
 
       .footer {
-        color: #666;
-        font-style: italic;
-        margin-top: 30px;
-        padding: 20px;
-        border-top: 2px solid rgba(0, 176, 240, 0.1);
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #555;
+      }
+
+      .btn-azul {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #003366;
+        color: white;
+        text-decoration: none;
+        font-size: 0.95em;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        z-index: 3;
+      }
+
+      .btn-azul:hover {
+        background-color: #00b0f0;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-azul:active {
+        transform: translateY(0);
+      }
+
+      .carousel {
+        width: 85%;
+        max-width: 500px; /* Reducido de 600px */
+        height: 350px; /* Reducido de 400px */
+        margin: 0 auto 15px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease;
+        width: 100%;
+      }
+
+      .carousel-item {
+        min-width: 100%;
+        height: 350px;
+        flex-shrink: 0; /* Añadido para evitar que los items se compriman */
+      }
+
+      .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background-color: #f5f5f5;
+      }
+
+      .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 51, 102, 0.7);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        z-index: 3;
+      }
+
+      .carousel-prev {
+        left: 10px;
+      }
+
+      .carousel-next {
+        right: 10px;
       }
 
       @media (max-width: 768px) {
@@ -205,30 +202,69 @@
     <div class="contenedor">
       <h1>Clima del Día: Frío Senatino</h1>
 
-      <div class="temp-display">
-        <i class="fas fa-snowflake temp-icon"></i>
-        <span style="font-size: 2.5em; color: var(--senati-dark)"
-          >Temperatura Baja</span
-        >
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item">
+            <img src="vestimenta/casaca_uno.PNG" alt="Saco SENATI" />
+          </div>
+          <div class="carousel-item">
+            <img src="vestimenta/casaca_dos.PNG" alt="Uniforme completo" />
+          </div>
+          <div class="carousel-item">
+            <img src="vestimenta/camisa.jpg" alt="Vestimenta SENATI" />
+          </div>
+          <div class="carousel-item">
+            <img src="vestimenta/corbata.jpg" alt="Pantalón de vestir" />
+          </div>
+          <div class="carousel-item">
+            <img src="vestimenta/pantalon.jpg" alt="Zapatos SENATI" />
+          </div>
+          <div class="carousel-item">
+            <img src="vestimenta/zapato_h.jpg" alt="Zapatos SENATI" />
+          </div>
+          <div class="carousel-item">
+            <img src="vestimenta/zapato_m.jpg" alt="Zapatos SENATI" />
+          </div>
+          <div class="carousel-item">
+            <img src="vestimenta/vestimenta_casaca.PNG" alt="Zapatos SENATI" />
+          </div>
+        </div>
+        <button class="carousel-control carousel-prev">←</button>
+        <button class="carousel-control carousel-next">→</button>
       </div>
 
-      <img src="img/imgfrio.png" alt="Día Frío en SENATI" />
-
       <p>
-        Hoy se presenta un día frío en SENATI. Se recomienda vestir con la
-        camisa y La Casaca oficial de SENATI, corbata, pantalón de vestir y
-        zapatos adecuados. Mantente abrigado durante tus actividades.
+        Hoy se presenta un día frío en SENATI. Para mantener el confort y la
+        formalidad, te recomendamos usar el uniforme completo con énfasis en el
+        abrigo: casaca institucional SENATI, camisa blanca, corbata
+        institucional, pantalón de vestir oscuro y zapatos formales negros. Esta
+        combinación te mantendrá abrigado y profesional durante toda tu jornada
+        académica.
       </p>
 
       <div class="recomendaciones">
         <strong>Recomendaciones para este día:</strong>
         <ul>
-          <li>Usa abrigo o suéter para mantenerte cálido</li>
-          <li>Vístete con capas de ropa para mejor aislamiento</li>
           <li>
-            No olvides tu bufanda, guantes y gorro si vas a salir al aire libre
+            La temperatura está baja, la casaca institucional SENATI es esencial
+            para mantener tu temperatura corporal.
           </li>
-          <li>Lleva contigo una botella de agua caliente o té</li>
+          <li>
+            Considera usar prendas térmicas discretas debajo del uniforme para
+            mayor protección contra el frío.
+          </li>
+          <li>
+            Mantén tu uniforme en excelente estado, especialmente la casaca que
+            será tu principal protección.
+          </li>
+          <li>
+            ara los traslados largos, complementa con accesorios abrigadores
+            como guantes o bufanda en colores sobrios.
+          </li>
+          <li>
+            Mantente hidratado con bebidas tibias, te ayudarán a regular tu
+            temperatura corporal.
+          </li>
         </ul>
       </div>
 
@@ -241,30 +277,38 @@
     </div>
 
     <script>
-      // Animación de copos de nieve
-      function createSnowflakes() {
-        for (let i = 0; i < 20; i++) {
-          const snowflake = document.createElement("div");
-          snowflake.innerHTML = "❄";
-          snowflake.style.cssText = `
-                    position: fixed;
-                    color: rgba(255, 255, 255, 0.3);
-                    font-size: ${Math.random() * 20 + 10}px;
-                    left: ${Math.random() * 100}vw;
-                    animation: snowfall ${
-                      Math.random() * 5 + 5
-                    }s linear infinite;
-                `;
-          document.body.appendChild(snowflake);
-        }
-      }
-      createSnowflakes();
-
       // Título animado
       setTimeout(() => {
         document.querySelector("h1").textContent =
           "❄️ ¡Prepárate! Día Frío en SENATI";
       }, 4000);
+
+      const carousel = document.querySelector(".carousel-inner");
+      const items = document.querySelectorAll(".carousel-item");
+      const prevBtn = document.querySelector(".carousel-prev");
+      const nextBtn = document.querySelector(".carousel-next");
+
+      let currentIndex = 0;
+
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCarousel();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+      });
+
+      // Auto-play cada 5 segundos
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+      }, 5000);
     </script>
   </body>
 </html>
