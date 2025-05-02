@@ -321,27 +321,27 @@
                     case 0:
                         description = "Despejado";
                         recommendation = "Recomendación: Usa ropa ligera";
-                        icon = "<img src='../img/img_clima/sunny_with_cloudy.png'>";
+                        icon = "<img src='img/img_clima/sunny_with_cloudy.png'>";
                         break;
                     case 1:
                         description = "Parcialmente nublado";
                         recommendation = "Recomendación: Lleva un suéter ligero";
-                        icon = "<img src='../img/img_clima/mostly_cloudy_day.png'>";
+                        icon = "<img src='img/img_clima/mostly_cloudy_day.png'>";
                         break;
                     case 2:
                         description = "Nublado";
                         recommendation = "Recomendación: Lleva un abrigo ligero";
-                        icon = "<img src='../img/img_clima/cloudy.png'>";
+                        icon = "<img src='img/img_clima/cloudy.png'>";
                         break;
                     case 3:
                         description = "Lluvia ligera";
                         recommendation = "Recomendación: Lleva paraguas";
-                        icon = "<img src='../img/img_clima/drizzle.png'>";
+                        icon = "<img src='img/img_clima/drizzle.png'>";
                         break;
                     default:
                         description = "Clima desconocido";
                         recommendation = "Recomendación: Consulta el clima más tarde";
-                        icon = "<img src='../img/img_clima/haze_fog_dust_smoke.png' alt='Despejado'>";
+                        icon = "<img src='img/img_clima/haze_fog_dust_smoke.png' alt='Despejado'>";
                         break;
                 }
 
@@ -360,6 +360,10 @@
     // Función para redirigir según el clima
     function redirigir(department) {
         let temperature = parseInt(document.getElementById(`temperature${department}`).textContent);
+        
+        // Guardar el idioma actual antes de redirigir
+        let currentLang = document.getElementById('languageToggle').textContent.toLowerCase();
+        localStorage.setItem('language', currentLang);
 
         if (temperature < 15) {
             window.location.href = "pages/frio.html";  // Redirige a la vista de clima frío
