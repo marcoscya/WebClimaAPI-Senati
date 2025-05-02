@@ -10,9 +10,44 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../styles/climas.css" />
+
+    <style>
+      .language-toggle {
+        position: fixed;
+        top: 28rem;
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        /* Add these properties to center the text */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0; /* Remove any default padding */
+      }
+      .language-toggle:hover {
+        background-color: rgba(255, 255, 255, 1);
+      }
+
+      .languaje-boton button {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <div class="contenedor">
+      <div class="languaje-boton">
+        <button id="languageToggle" class="language-toggle">ES</button>
+      </div>
+
       <h1>Clima del Día: Frío Senatino</h1>
 
       <div class="carousel">
@@ -90,14 +125,12 @@
       <p class="footer">
         Mantente siempre informado y prepárate con responsabilidad.
       </p>
-      <button
-        onclick="window.location.href='../../index.html'"
-        class="btn-azul"
-      >
+      <button onclick="window.location.href='../index.html'" class="btn-azul">
         ← Volver al Inicio
       </button>
     </div>
 
     <script src="../climas.js" defer></script>
+    <script src="../translations-pages.js" defer></script>
   </body>
 </html>
